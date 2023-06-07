@@ -7,8 +7,13 @@ function Test(){
         const formData=new FormData();
         formData.append('file',file);
 
-        axios.post('/upload',formData).then((response)=>{
-
+        //sending the uplaoded file to server by using axios rout handler
+        axios.post('/upload',formData,{
+            headers:{
+                'Content-Type':'multipart/form-data'
+            }
+        }).then((response)=>{
+            console.log(response);
         }).catch((err)=>{
             console.log(err);
         })
