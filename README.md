@@ -29,11 +29,11 @@ Welcome to the OCR Project repository! This project aims to develop a powerful w
 ## Setup Instructions
 To set up and run the OCR project locally, follow these steps:
 
-1. Clone the repository: `git clone https://github.com/your-username/ocr-project.git`
-2. Install dependencies for the backend server: `cd ocr-project/backend && npm install`
-3. Install dependencies for the frontend: `cd ../frontend && npm install`
-4. Start the backend server: `cd ../backend && npm start`
-5. Start the frontend development server: `cd ../frontend && npm start`
+1. Clone the repository: `git clone https://github.com/Magowtham/OCR-Project.git`
+2. Install dependencies for the backend server: `cd Server && npm install dependencies`
+3. Install dependencies for the frontend: `cd Client && npm install react dependencies`
+4. Start the backend server: `cd Server && node backend-main-file.js`
+5. Start the frontend development server: `cd Client/ocr-project && npm start`
 6. Access the web application at `http://localhost:3000` in your browser.
 
 ## Contributing
@@ -41,7 +41,7 @@ We welcome contributions from the developer community to enhance the OCR project
 
 
 ## Acknowledgments
-We would like to express our gratitude to the open-source community, particularly the developers of ReactJS, Node.js, Tesseract OCR, Google Translate, and Microsoft Translator, for their invaluable contributions.
+We would like to express our gratitude to the open-source community, particularly the developers of ReactJS, Node.js, Tesseract OCR, Google Translate for their invaluable contributions.
 
 ## Contact
 For any inquiries or feedback regarding the OCR project, please contact:
