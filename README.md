@@ -1,6 +1,6 @@
-# OCR Project
 
-![OCR Project Logo](images/ocr-logo.png)
+
+# OCR Project
 
 [![License](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
 [![Contributions](https://img.shields.io/badge/contributions-welcome-brightgreen.svg)](CONTRIBUTING.md)
@@ -18,14 +18,14 @@ Welcome to the OCR Project repository! This project aims to develop a powerful w
 
 ## Technologies Used
 - ReactJS: Frontend development and user interface design.
-  ![ReactJS](https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png)
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" alt="ReactJS Logo" height="50">
 - Node.js: Backend server implementation and image processing.
-  ![Node.js](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png)
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/1280px-Node.js_logo.svg.png" alt="Node.js Logo" height="50">
 - Tesseract OCR: Open-source OCR engine for text extraction.
-  ![Tesseract OCR](https://upload.wikimedia.org/wikipedia/commons/7/78/Tesseract_OCR_logo_%28Google%29.png)
-- Translation APIs: Google Translate, Microsoft Translator, etc., for language conversion.
-  ![Google Translate](https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/2048px-Google_Translate_logo.svg.png)
-
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Tesseract_OCR_logo_%28Google%29.png" alt="Tesseract OCR Logo" height="50">
+- Translation APIs: Google Translate for language conversion.
+  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Tesseract_OCR_logo_%28Google%29.png" alt="Google Translate Logo" height="50">
+  
 ## Setup Instructions
 To set up and run the OCR project locally, follow these steps:
 
@@ -39,8 +39,6 @@ To set up and run the OCR project locally, follow these steps:
 ## Contributing
 We welcome contributions from the developer community to enhance the OCR project. To contribute, please follow the guidelines in [CONTRIBUTING.md](CONTRIBUTING.md). Feel free to raise issues, submit pull requests, or provide suggestions for improvement.
 
-## License
-This project is licensed under the [MIT License](LICENSE). Feel free to use, modify, and distribute the code for both commercial and non-commercial purposes.
 
 ## Acknowledgments
 We would like to express our gratitude to the open-source community, particularly the developers of ReactJS, Node.js, Tesseract OCR, Google Translate, and Microsoft Translator, for their invaluable contributions.
@@ -48,4 +46,3 @@ We would like to express our gratitude to the open-source community, particularl
 ## Contact
 For any inquiries or feedback regarding the OCR project, please contact:
 - Your Name: [Your Email](magowtham7@gmail.com)
-- Ayurvedic OCR Project: [Project Website](https://ocr-project.com)
