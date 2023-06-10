@@ -24,7 +24,7 @@ Welcome to the OCR Project repository! This project aims to develop a powerful w
 - Tesseract OCR: Open-source OCR engine for text extraction.
   <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Tesseract_OCR_logo_%28Google%29.png" alt="Tesseract OCR Logo" height="50">
 - Translation APIs: Google Translate for language conversion.
-  <img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Tesseract_OCR_logo_%28Google%29.png" alt="Google Translate Logo" height="50">
+  <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Google_Translate_logo.svg/2048px-Google_Translate_logo.svg.png" alt="Google Translate Logo" height="50">
   
 ## Setup Instructions
 To set up and run the OCR project locally, follow these steps:
