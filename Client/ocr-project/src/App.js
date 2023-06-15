@@ -1,9 +1,10 @@
-import React from "react"
+import React from "react";
+import Test from "./componets/Test";
 
 function App() {
   return (
     <div className="App">
-      <h1>hello world this is react</h1>
+      <Test />
     </div>
   );
 }
