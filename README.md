@@ -45,4 +45,4 @@ We would like to express our gratitude to the open-source community, particularl
 
 ## Contact
 For any inquiries or feedback regarding the OCR project, please contact:
-- Your Name: [Your Email](magowtham7@gmail.com)
+- Gowtham MA: [magowtham&@gmail.com]
