@@ -1,23 +1,45 @@
 const express = require("express");
 const cors = require("cors");
 const fs = require("fs");
-const os = require("os");
+const tmp = require("tmp");
+const pdfjsLib = require("pdfjs-dist");
+const { error } = require("console");
 
 const app = express();
 app.use(cors());
 
 //temparay directory
-const tempDir = fs.mkdtempSync(`${os.tmpdir()}/`);
+const tmpDir = tmp.dirSync();
+const tempDirPath = tmpDir.name;
 
-const bufferFilePath = `${tempDir}/temp_buffer_file.bin`;
-const writableStream = fs.createWriteStream(bufferFilePath);
-
+const writableStream = fs.createWriteStream(`${tempDirPath}/temp_file.bin`);
+let i = 0;
 app.post("/data", (req, res) => {
+  console.log(req.body);
   const readableStream = req;
+  //creating pipe linig to handle reading and writing backpressure.
   readableStream.pipe(writableStream);
 
   req.on("data", (chunk) => {
+    console.log(chunk);
     writableStream.write(chunk);
+  });
+
+  req.on("end", () => {
+    res.send("data recieved successfully.");
+  });
+
+  writableStream.once("finish", () => {
+    fs.readFile(`${tempDirPath}/temp_file.bin`, (err, data) => {
+      if (err) {
+        console.log("Error reading the temp file");
+        return;
+      }
+    });
+  });
+
+  writableStream.once("error", (error) => {
+    console.error("Error writing to the temp file: ", error);
   });
 });
 
