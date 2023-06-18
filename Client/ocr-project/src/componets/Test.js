@@ -6,11 +6,11 @@ function Test() {
   const reader = new FileReader();
   reader.onloadend = async function () {
     const fileType = detectFileType(reader.result);
-    sendData(reader.result, fileType);
+    splitDataToChunk(reader.result, fileType);
   };
 
-  //function to send the data to node js server
-  const sendData = async (bufferFile, fileType) => {
+  //spliting of the data to chunk
+  const splitDataToChunk = async (bufferFile, fileType) => {
     const headers = {
       "Content-Type": "application/octet-stream",
       fileType,
@@ -22,16 +22,32 @@ function Test() {
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, bufferFile.byteLength);
       const chunk = bufferFile.slice(start, end);
-
-      axios
-        .post("http://localhost:5000/data", chunk, { headers })
-        .then((response) => {
-          console.log(response);
-        })
-        .catch((err) => {
-          console.log(`Erorr ocurred at the react ${err}`);
-        });
+      sendDataTOServer(chunk, 3, 0);
     }
+  };
+
+  //Sending data to server ;
+  const sendDataTOServer = async (chunk, numRetry, retryAttempt) => {
+    try {
+      const response = await axios.post("http://localhost:5000/data", chunk);
+      console.log(response);
+    } catch (error) {
+      if (retryAttempt < numRetry) {
+        retryAttempt++;
+        setTimeout(() => {
+          sendDataTOServer(chunk, numRetry, retryAttempt);
+        }, calculateRetryDelay(retryAttempt));
+      } else {
+        console.log(`An error was occurred ${error}`);
+      }
+    }
+  };
+
+  //calculating the time delay
+  const calculateRetryDelay = (retryAttempt) => {
+    const baseDelay = 100;
+    const factor = 2;
+    return baseDelay * Math.pow(factor, retryAttempt);
   };
 
   //handling file uploads
