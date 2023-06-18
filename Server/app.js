@@ -19,6 +19,10 @@ app.post("/data", (req, res) => {
   req.on("data", (chunk) => {
     writableStream.write(chunk);
   });
+  req.on("end", () => {
+    console.log(writableStream);
+    res.send("data recieved successfully.");
+  });
 });
 
 app.listen(5000, () => {
