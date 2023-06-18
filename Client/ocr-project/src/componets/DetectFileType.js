@@ -4,7 +4,6 @@ function detectFileType(bufferFile) {
   for (let i = 0; i < arr.length; i++) {
     header += arr[i].toString(16);
   }
-
   let fileType;
   switch (header) {
     case "89504e47":
