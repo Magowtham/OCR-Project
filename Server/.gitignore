@@ -1,4 +1,9 @@
+<<<<<<< HEAD
 .gitignore
 git-token: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;
 node_modules
 
+=======
+node_modules
+README.md
+>>>>>>> 0e38b1f80a5e21a240dd23e16d26aff3eb13b0a6

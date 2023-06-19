@@ -11,12 +11,15 @@ function Test() {
 
   //spliting of the data to chunk
   const splitDataToChunk = async (bufferFile, fileType) => {
+    const chunkSize = 1024 * 1024;
+    const totalChunks = Math.ceil(bufferFile.byteLength / chunkSize);
+    console.log(totalChunks);
+
     const headers = {
       "Content-Type": "application/octet-stream",
       fileType,
+      totalChunks,
     };
-    const chunkSize = 1024 * 1024;
-    const totalChunks = Math.ceil(bufferFile.byteLength / chunkSize);
 
     for (let i = 0; i < totalChunks; i++) {
       const start = i * chunkSize;
