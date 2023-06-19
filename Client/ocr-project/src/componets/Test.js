@@ -22,26 +22,27 @@ function Test() {
       const start = i * chunkSize;
       const end = Math.min(start + chunkSize, bufferFile.byteLength);
       const chunk = bufferFile.slice(start, end);
-      sendDataTOServer(chunk, 3, 0);
+      sendDataTOServer(chunk, 3, 0, headers);
     }
   };
 
   //Sending data to server ;
-  const sendDataTOServer = async (chunk, numRetry, retryAttempt) => {
+  const sendDataTOServer = async (chunk, numRetry, retryAttempt, headers) => {
+    console.log(chunk);
     try {
-      const response = await axios.post("", chunk);
-      if (response.status != 200) {
-        if (retryAttempt < numRetry) {
-          retryAttempt++;
-          setTimeout(() => {
-            sendDataTOServer(chunk, numRetry, retryAttempt);
-          }, calculateRetryDelay(retryAttempt));
-        } else {
-          return;
-        }
-      }
+      const response = await axios.post("http://localhost:5000/data", chunk, {
+        headers,
+      });
+      console.log(response);
     } catch (error) {
-      console.log(error);
+      if (retryAttempt < numRetry) {
+        retryAttempt++;
+        setTimeout(() => {
+          sendDataTOServer(chunk, numRetry, retryAttempt);
+        }, calculateRetryDelay(retryAttempt));
+      } else {
+        console.log(`An error was occurred ${error}`);
+      }
     }
   };
 
@@ -58,6 +59,7 @@ function Test() {
   };
   useEffect(() => {
     const input = document.querySelector("input");
+    const btn = document.querySelector("button");
     input.addEventListener("change", handleFileUpload);
   }, []);
   return (
