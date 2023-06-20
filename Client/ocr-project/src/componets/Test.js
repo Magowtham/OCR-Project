@@ -31,7 +31,6 @@ function Test() {
 
   //Sending data to server ;
   const sendDataTOServer = async (chunk, numRetry, retryAttempt, headers) => {
-    console.log(chunk);
     try {
       const response = await axios.post("http://localhost:5000/data", chunk, {
         headers,

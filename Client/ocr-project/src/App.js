@@ -1,10 +1,12 @@
 import React from "react";
 import Test from "./componets/Test";
+import ClientWebSocket from "./componets/ClientWebSocket";
 
 function App() {
   return (
     <div className="App">
-      <Test />
+      {/* <Test /> */}
+      <ClientWebSocket />
     </div>
   );
 }
