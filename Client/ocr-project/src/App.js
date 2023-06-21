@@ -5,8 +5,8 @@ import ClientWebSocket from "./componets/ClientWebSocket";
 function App() {
   return (
     <div className="App">
-      {/* <Test /> */}
-      <ClientWebSocket />
+      <Test />
+      {/* <ClientWebSocket /> */}
     </div>
   );
 }

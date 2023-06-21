@@ -6,53 +6,18 @@ function Test() {
   const reader = new FileReader();
   reader.onloadend = async function () {
     const fileType = detectFileType(reader.result);
-    splitDataToChunk(reader.result, fileType);
-  };
-
-  //spliting of the data to chunk
-  const splitDataToChunk = async (bufferFile, fileType) => {
-    const chunkSize = 1024 * 1024;
-    const totalChunks = Math.ceil(bufferFile.byteLength / chunkSize);
-    console.log(totalChunks);
-
-    const headers = {
-      "Content-Type": "application/octet-stream",
-      fileType,
-      totalChunks,
-    };
-
-    for (let i = 0; i < totalChunks; i++) {
-      const start = i * chunkSize;
-      const end = Math.min(start + chunkSize, bufferFile.byteLength);
-      const chunk = bufferFile.slice(start, end);
-      sendDataTOServer(chunk, 3, 0, headers);
-    }
+    const base64Data = btoa(reader.result);
+    sendDataToServer(base64Data);
   };
 
   //Sending data to server ;
-  const sendDataTOServer = async (chunk, numRetry, retryAttempt, headers) => {
+  const sendDataToServer = async (data) => {
     try {
-      const response = await axios.post("http://localhost:5000/data", chunk, {
-        headers,
-      });
+      const response = await axios.post("http://localhost:5000/data", data);
       console.log(response);
     } catch (error) {
-      if (retryAttempt < numRetry) {
-        retryAttempt++;
-        setTimeout(() => {
-          sendDataTOServer(chunk, numRetry, retryAttempt);
-        }, calculateRetryDelay(retryAttempt));
-      } else {
-        console.log(`An error was occurred ${error}`);
-      }
+      console.log("Error occurred while uploading ..");
     }
-  };
-
-  //calculating the time delay
-  const calculateRetryDelay = (retryAttempt) => {
-    const baseDelay = 100;
-    const factor = 2;
-    return baseDelay * Math.pow(factor, retryAttempt);
   };
 
   //handling file uploads
@@ -64,6 +29,7 @@ function Test() {
     const btn = document.querySelector("button");
     input.addEventListener("change", handleFileUpload);
   }, []);
+
   return (
     <>
       <input type="file" />
